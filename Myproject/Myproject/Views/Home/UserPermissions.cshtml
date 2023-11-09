@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+<link rel="stylesheet" href="~/css/user_permissions.css" />
+
+
+<div class="container mt-4">
+    <!-- 頭 -->
+    <div class="phead">
+        <div class="col-12">
+            <form>
+                <div class="mb-3">
+                    <label for="employeeId" class="form-label">工號</label>
+                    <input type="text" class="form-control" id="employeeId" name="employeeId" />
+                </div>
+
+                <!-- 姓名輸入框 -->
+                <div class="mb-3">
+                    <label for="employeeName" class="form-label">姓名</label>
+                    <input type="text" class="form-control" id="employeeName" name="employeeName" />
+                </div>
+
+                <!-- 密碼輸入框 -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">密碼</label>
+                    <input type="password" class="form-control" id="password" name="password" />
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        超級使用者
+                    </label>
+                </div>
+
+            </form>
+        
+
+            <!-- 操作按鈕 -->
+            <div class="d-flex">
+                <button type="button" class="btn btn-primary mx-2" >新增</button>
+                <button type="button" class="btn btn-secondary mx-2" >修改</button>
+                <button type="button" class="btn btn-success mx-2" >存檔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 身 -->
+    <div class="pbody"> 
+        <div class="col-12">
+            <div class="mb-3">
+                <p>目前用戶列表</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+    
+
+</script>
+
+
+

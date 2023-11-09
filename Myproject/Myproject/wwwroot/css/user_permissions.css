@@ -1,0 +1,32 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+html, body {
+    height: 100%;
+
+}
+
+.pbody{
+    position: fixed;
+    margin-top: 25px;
+}
+
+
+
+.form-control {
+    width: 250px;
+}
+
+.form-check {
+    position: fixed;
+    top: 0;
+    right: 250px;
+    margin: 50px;
+}
+
+li.list-group-item{
+    width: 100vw;
+}

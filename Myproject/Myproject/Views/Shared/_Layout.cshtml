@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Myproject</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/33d6c0fa08.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 side-menu">
+                <nav>
+
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="fa-solid fa-house"></i>
+                        回首頁
+                    </a>
+
+
+                    <a asp-area="" asp-controller="Home" asp-action="UserPermissions">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        權限管理
+                    </a>
+
+                    <a asp-area="" asp-controller="Home" asp-action="Dashboard">
+                        <i class="fa-solid fa-gauge"></i>
+                        儀表板
+                    </a>
+
+                    <a asp-area="" asp-controller="Home" asp-action="ProductionOrders">
+                        <i class="fa-solid fa-briefcase"></i>
+                        工單管理
+                    </a>
+
+                    <a asp-area="" asp-controller="Home" asp-action="ResourceMonitoring">
+                        <i class="fa-brands fa-watchman-monitoring"></i>
+                        設備監控
+                    </a>
+
+                    <a asp-area="" asp-controller="Home" asp-action="ProductionData">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        生產數據
+                    </a>
+
+                    <a asp-area="" asp-controller="Home" asp-action="LogOut">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        登出
+                    </a>
+
+                </nav>
+            </div>
+
+            <div class="col-md-10">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
