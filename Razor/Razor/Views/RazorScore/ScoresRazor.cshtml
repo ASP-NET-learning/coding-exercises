@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Razor.Models.Student>
+
+@{
+    ViewBag.Title = "ScoresRazor";
+}
+
+<h2>ScoresRazor</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chinese)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.English)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Math)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+
+
+    @if (item.Chinese < 60)
+    {
+        <td class="poor">@Html.DisplayFor(modelItem => item.Chinese)</td>
+    }
+    else if (item.Chinese >= 87)
+    {
+        <td class="excellect">@Html.DisplayFor(modelItem => item.Chinese)</td>
+    }
+    else
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.Chinese)
+        </td>
+    }
+
+    @if (item.English < 60)
+    {
+        <td class="poor">
+            @Html.DisplayFor(modelItem => item.English)
+        </td>
+    }
+    else if (item.English >= 87)
+    {
+        <td class="excellect">
+            @Html.DisplayFor(modelItem => item.English)
+        </td>
+    }
+    else
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.English)
+        </td>
+    }
+
+
+    @if (item.Math < 60)
+    {
+        <td class="poor">
+            @Html.DisplayFor(modelItem => item.Math)
+        </td>
+    }
+    else if (item.Math >= 87)
+    {
+        <td class="excellect">
+            @Html.DisplayFor(modelItem => item.Math)
+        </td>
+    }
+    else
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.Math)
+        </td>
+    }
+
+    @if (item.Id == ViewBag.topId)
+    {
+        <td class="top1">
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+    }
+    else
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+    }
+</tr>
+}
+
+</table>
+
+@section topCss
+{
+    <style type="text/css">
+        th
+        {
+            color: white;
+            background-color:black;
+            text-align: center;
+        }
+        .table > tobody > tr:hover 
+        {
+            background-color: antiquewhite !important;
+        }
+        .poor
+        {
+            color:white !important;
+            background-color: red!important;
+        }
+        .excellect
+        {
+            background-color:aqua!important;
+        }
+        .top1
+        {
+            background-color: yellow!important;
+            border: 2px dashed black !important;
+            font-weight: 900;
+            font-size:1.2em;
+        }
+        .top1::after{
+            content: (總分第一);
+        }
+       
+    </style>
+}

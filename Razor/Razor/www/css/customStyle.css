@@ -1,0 +1,29 @@
+﻿th{
+    color:white;
+    background-color: black;
+    text-align: center;
+}
+
+.table > tbody > tr:hover{
+    background-color: antiquewhite !important;
+}
+
+.poor{
+    color: white !important;
+    background-color: red !important;
+}
+
+.excellent{
+    background-color:aqua!important;
+}
+
+.top1{
+    background-color:yellow!important;
+    border: 2px dashed black !important;
+    font-weight: 900;
+    font-size: 1.2em
+}
+
+.top::after{
+    content: '(總分第一)';
+}
