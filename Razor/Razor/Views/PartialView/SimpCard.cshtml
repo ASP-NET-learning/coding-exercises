@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "SimpCard";
+}
+
+<div class="jumbotron">
+    <h2>人物卡牌</h2>
+</div>
+
+<div class="card-grid">
+    @for (int i = 0; i < 9; i++)
+    {
+        @Html.Partial("_SimpleCardPartial");
+    }
+</div>
+
+
+@section topCss{
+    <link href="~/www/css/StyleSheet1.css" rel="stylesheet" />
+}

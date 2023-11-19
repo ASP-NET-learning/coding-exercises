@@ -1,0 +1,38 @@
+﻿/* 在StyleSheet1.css中添加以下樣式 */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3列 */
+    gap: 20px; /* 設定卡片之間的間距 */
+}
+
+/* 這裡可以添加其他卡片的樣式，根據你的需要進行修改 */
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.card-body {
+    padding: 16px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}

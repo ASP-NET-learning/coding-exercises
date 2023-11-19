@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "OrderList";
+}
+
+@model IEnumerable<DataConnectPractise.Models.Orders>
+
+<h1>@ViewData["Title"]</h1>
+
+<table id="memberlist" class="table table-bordered">
+    <tbody>
+        @foreach (var items in Model)
+        {
+            <tr>
+                <td>@items.OrderID</td>
+                <td>@items.OrderDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
