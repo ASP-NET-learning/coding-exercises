@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MvcJson.Models.Location>
+@{
+    var jsMonths = System.Text.Json.JsonSerializer.Serialize(ViewBag.JsonLabels);
+    var jsArray = System.Text.Json.JsonSerializer.Serialize(ViewBag.JsonLocations);
+}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<canvas id="lineChart" width="400" height="400"></canvas>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>城市</th>
+            <th>1-12月平均溫度資料</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+                @foreach(var m in Model)
+            {
+                    <tr>
+                        <td>@Html.DisplayFor(item => m.City)</td>
+                        <td>@Html.DisplayFor(item => m.Temperature)</td>
+                    </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@section endJS
+{
+    <script>
+        var jsMonths = @Html.Raw(Json.Serialize(ViewBag.JsonLabels));
+        var jsArray = @Html.Raw(Json.Serialize(ViewBag.JsonLocations));
+        var ctx = document.getElementById('lineChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: 
+            {
+                labels : jsMonths,
+                datasets:
+                [
+                    {
+                        label: jsArray[0].City,
+                        data : jsArray[0].Temperature
+                    },
+                    {
+                        label: jsArray[1].City,
+                        data : jsArray[1].Temperature
+                    },
+                    {
+                        label: jsArray[2].City,
+                        data : jsArray[2].Temperature
+                    }
+                ]
+                
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 26,
+                    text: '1-6平均氣溫'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        fontColor: 'black'
+                    }
+                }
+            }
+        });
+
+</script>
+
+
+}

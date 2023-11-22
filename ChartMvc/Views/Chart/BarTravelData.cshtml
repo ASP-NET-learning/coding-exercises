@@ -1,0 +1,119 @@
+﻿<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+@{
+    ViewBag.Title = "出遊投票統計";
+    var footerText = DateTime.Now.Year + "年 / " + DateTime.Now.Month + "月投票統計結果";  
+    var countries = System.Text.Json.JsonSerializer.Serialize(ViewBag.Countries);
+    var votes = System.Text.Json.JsonSerializer.Serialize(ViewBag.Votes);
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">旅遊行程投票 - 直向</div>
+            <div class="panel-body">
+                <canvas id="verticalBar"></canvas>
+            </div>
+            <div class="panel-footer"></div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">旅遊行程投票 - 橫向</div>
+            <div class="panel-body">
+                <canvas id="horizontalBar"></canvas>
+            </div>
+            <div class="panel-footer"></div>
+        </div>
+    </div>
+</div>
+
+
+@section endJS
+{
+    <script>
+        const barDirection = {
+            vertical: 'bar',
+            horizontal: 'bar'
+        };
+        
+        var ctx1 = document.getElementById("verticalBar")
+        BarChart(ctx1, barDirection.vertical);
+        
+        var ctx2 = document.getElementById("horizontalBar")
+        BarChart(ctx2, barDirection.horizontal);
+
+
+        function BarChart(context, barChartDirection) 
+        {
+            if (!ctx2) {
+                var myChart = new Chart(context, {
+                    type: barChartDirection,
+                    data: {
+                        labels: @Html.Raw(countries),
+                        datasets: [{
+                            label: '旅行行程投票',
+                            data: @Html.Raw(votes)
+                            }]
+                    },
+                    options: {
+                        
+                        responsive: true,
+                        title: {
+                            display: true,
+                            fontSize: 26,
+                            text: '旅遊'
+                        },
+                        tooltips: {
+                            mode: 'point',
+                            intersect: true,
+                        },
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                fontColor: 'black'
+                            }
+                        }
+                    }
+                });
+            }
+            else 
+            {
+                var myChart = new Chart(context, {
+                    type: barChartDirection,
+                    data: {
+                        labels: @Html.Raw(countries),
+                        datasets: [{
+                            label: '旅行行程投票',
+                            data: @Html.Raw(votes)
+                            }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        title: {
+                            display: true,
+                            fontSize: 26,
+                            text: '旅遊'
+                        },
+                        tooltips: {
+                            mode: 'point',
+                            intersect: true,
+                        },
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                fontColor: 'black'
+                            }
+                        }
+                    }
+                });
+            }
+
+            
+        }
+
+
+    </script>
+}

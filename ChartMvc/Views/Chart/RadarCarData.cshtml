@@ -1,0 +1,68 @@
+﻿<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+@{
+    ViewBag.Title = "RadarCar";
+    var footerText = "汽車評比";
+    var scopeLabels = System.Text.Json.JsonSerializer.Serialize(ViewBag.ScopeLabels);
+    var suvScores = System.Text.Json.JsonSerializer.Serialize(ViewBag.SuvScores);
+    var sedanScores = System.Text.Json.JsonSerializer.Serialize(ViewBag.sedanScores);
+}
+
+<div class="jumbotron alert-success">
+    <h2>不同車比較</h2>
+</div>
+<div class="row">
+    <div class=" col-md-8 col-md-offset-2">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3>Radar image</h3>
+            </div>
+            <div class="panel panel-body">
+                <canvas id="radarChart"></canvas>
+            </div>
+            <div class="panel-footer"><h4>@footerText</h4></div>
+        </div>
+    </div>
+</div>
+
+@section endJS{
+    <script>
+        var ctx = document.getElementById('radarChart');
+        var chart = new Chart(ctx, {
+            type: 'radar',
+            data: 
+            {
+                labels: @Html.Raw(scopeLabels),
+                datasets: 
+                [
+                    {
+                        label: "SUV",
+                        data: @Html.Raw(suvScores)
+                    },
+                    {
+                        label: "轎車",
+                        data: @Html.Raw(sedanScores)
+                    },
+                ]
+            },
+            options: {
+
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 26,
+                    text: 'car'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        fontColor: 'black'
+                    }
+                }
+            }
+        })
+    </script>
+}

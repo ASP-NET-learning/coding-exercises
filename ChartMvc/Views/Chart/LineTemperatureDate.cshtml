@@ -1,0 +1,67 @@
+﻿<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+@using System.Text.Json;
+
+@model IEnumerable<ChartMvc.Models.Location>
+@{
+    ViewBag.Title = "各地氣溫";
+    var jsonMonths = System.Text.Json.JsonSerializer.Serialize(ViewBag.MonthsLabel);
+    var jsonLocations = System.Text.Json.JsonSerializer.Serialize(Model);
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h2>以Liine Chart則線圖繪製各地氣溫</h2>
+    </div>
+    <canvas id="lineChart"></canvas>
+</div>
+
+@section endJS{
+    <script>
+        var jsLocation = @Html.Raw(jsonLocations);
+        var ctx = document.getElementById("lineChart");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data:
+            {
+                labels: @Html.Raw(jsonMonths),
+                datasets:
+                    [
+                        {
+                            label: jsLocation[0].City, // 修改这里的'lable'为'label'
+                            data: jsLocation[0].Temperature,
+                            fill: false
+                        },
+                        {
+                            label: jsLocation[1].City,
+                            data: jsLocation[1].Temperature,
+                            fill: false
+                        },
+                        {
+                            label: jsLocation[2].City,
+                            data: jsLocation[2].Temperature,
+                            fill: false
+                        }
+                    ]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 26,
+                    text: '年平均氣溫'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        fontColor: 'black'
+                    }
+                }
+            }
+        });
+
+    </script>
+}

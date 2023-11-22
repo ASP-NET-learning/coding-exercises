@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "6jXD68hzJODubE4WPjY4MjuxTId48qPcOn4KkO1Y7XhaIiny56zRzYJna0lnMMpvBeGNiX9hC2ughT7DYPoYNw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\klas9\\source\\repos\\coding-exercises\\MvcJson\\MvcJson.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\klas9\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\klas9\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\klas9\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
+    "C:\\Users\\klas9\\.nuget\\packages\\system.windows.extensions\\8.0.0\\system.windows.extensions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

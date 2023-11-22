@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "繪製人力資源圖";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<canvas id="pieChart" width="20" height="20"></canvas>
+<canvas id="doughuntChart" width="20" height="20"></canvas>
+
+<script>
+    var ctxPie = document.getElementById('pieChart').getContext('2d');
+    var myChartPie = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: ['管理者', '工程師', '業務', '客服', '行銷', '其他'],
+            datasets: [{
+                data: [8.7, 14.5, 39.1, 11.6, 14.5, 11.6],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                fontSize: 26,
+                text: '職務類型分布%'
+            },
+            legend: {
+                position: 'bottom',
+                labels: {
+                    fontColor: 'black' // 修正這裡，黑色字體的設定要用引號括起來
+                }
+            }
+        }
+    });
+
+    var ctxDoughnut = document.getElementById('doughuntChart').getContext('2d');
+    var myChartDoughnut = new Chart(ctxDoughnut, {
+        type: 'doughnut',
+        data: {
+            labels: ['博士', '碩士', '大學', '其他'],
+            datasets: [{
+                data: [8.7, 14.5, 39.1, 11.6, 14.5, 11.6],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                fontSize: 26,
+                text: '員工學歷分布%'
+            },
+            legend: {
+                position: 'bottom',
+                labels: {
+                    fontColor: 'black' // 修正這裡，黑色字體的設定要用引號括起來
+                }
+            }
+        }
+    });
+
+
+
+</script>

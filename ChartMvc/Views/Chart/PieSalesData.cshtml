@@ -1,0 +1,78 @@
+﻿<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+@{
+    ViewBag.Title = "PieSalesData";
+
+    var productionLabels = System.Text.Json.JsonSerializer.Serialize(ViewBag.ProductLabels);
+    var productionData = System.Text.Json.JsonSerializer.Serialize(ViewBag.ProductData);
+    var countryLabels = System.Text.Json.JsonSerializer.Serialize(ViewBag.CountryLabel);
+    var countryData = System.Text.Json.JsonSerializer.Serialize(ViewBag.CountryData);
+}
+<div><canvas id="pieChart"></canvas></div>
+<div><canvas id="doughuntChart"></canvas></div>
+
+
+@section endJS{
+    <script>
+        var ctxPie = document.getElementById('pieChart');
+        var myChartPie = new Chart(ctxPie, {
+            type: 'pie',
+            data: 
+            {
+                labels: @Html.Raw(productionLabels),
+                datasets: [{
+                    data: @Html.Raw(productionData),
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 26,
+                    text: '職務類型分布%'
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        fontColor: 'black' // 修正這裡，黑色字體的設定要用引號括起來
+                    }
+                }
+            }
+        });
+
+        var ctxDoughnut = document.getElementById('doughuntChart');
+        var myChartDoughnut = new Chart(ctxDoughnut, {
+            type: 'doughnut',
+            data: {
+                labels: @Html.Raw(countryLabels),
+                datasets: [{
+                    data: @Html.Raw(countryData),
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 26
+                    //text: '員工學歷分布%'
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        fontColor: 'black' // 修正這裡，黑色字體的設定要用引號括起來
+                    }
+                }
+            }
+        });
+
+    </script>
+}
