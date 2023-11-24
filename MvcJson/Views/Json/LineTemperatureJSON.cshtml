@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<MvcJson.Models.Location>
+@using Newtonsoft.Json;
+
 @{
-    var jsMonths = System.Text.Json.JsonSerializer.Serialize(ViewBag.JsonLabels);
-    var jsArray = System.Text.Json.JsonSerializer.Serialize(ViewBag.JsonLocations);
+    var jsMonth = JsonConvert.DeserializeObject(ViewBag.Labels);
+    var jsArray = JsonConvert.DeserializeObject(ViewBag.JsonLocations);
 }
+
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <canvas id="lineChart" width="400" height="400"></canvas>
@@ -16,12 +20,12 @@
     </thead>
     <tbody>
         @{
-                @foreach(var m in Model)
+            @foreach(var m in Model)
             {
-                    <tr>
-                        <td>@Html.DisplayFor(item => m.City)</td>
-                        <td>@Html.DisplayFor(item => m.Temperature)</td>
-                    </tr>
+                <tr>
+                    <td>@Html.DisplayFor(item => m.City)</td>
+                    <td>@Html.DisplayFor(item => m.Temperature)</td>
+                </tr>
             }
         }
     </tbody>
@@ -30,52 +34,42 @@
 @section endJS
 {
     <script>
-        var jsMonths = @Html.Raw(Json.Serialize(ViewBag.JsonLabels));
-        var jsArray = @Html.Raw(Json.Serialize(ViewBag.JsonLocations));
-        var ctx = document.getElementById('lineChart').getContext('2d');
-        var chart = new Chart(ctx, {
+        const ctx = document.getElementById('lineChart').getContext('2d');      
+        const lineChart = new Chart(ctx, {
             type: 'line',
-            data: 
+            data:
             {
-                labels : jsMonths,
+                labels: @Html.Raw(jsMonth),
                 datasets:
                 [
                     {
-                        label: jsArray[0].City,
-                        data : jsArray[0].Temperature
+                        label: '@Html.Raw(jsArray[0].City)',
+                        data: @Html.Raw(jsArray[0].Temperature)
                     },
                     {
-                        label: jsArray[1].City,
-                        data : jsArray[1].Temperature
+                        label: '@Html.Raw(jsArray[1].City)',
+                        data: @Html.Raw(jsArray[1].Temperature)
                     },
                     {
-                        label: jsArray[2].City,
-                        data : jsArray[2].Temperature
+                        label: '@Html.Raw(jsArray[2].City)',
+                        data: @Html.Raw(jsArray[2].Temperature)
                     }
                 ]
-                
             },
             options: {
                 responsive: true,
                 title: {
                     display: true,
                     fontSize: 26,
-                    text: '1-6平均氣溫'
-                },
-                tooltips: {
-                    mode: 'point',
-                    intersect: true,
                 },
                 legend: {
                     position: 'bottom',
                     labels: {
-                        fontColor: 'black'
+                        fontColor: 'black' 
                     }
                 }
             }
         });
-
-</script>
-
+    </script>
 
 }

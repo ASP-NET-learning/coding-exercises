@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MvcJson")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c6733f842bd3e86f3f8dcfc625e227ad713b96f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MvcJson")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MvcJson")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
