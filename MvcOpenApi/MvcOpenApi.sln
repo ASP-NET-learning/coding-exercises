@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcOpenApi", "MvcOpenApi.csproj", "{BB945AFC-AF5E-41FA-AB1B-A3FC89924721}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB945AFC-AF5E-41FA-AB1B-A3FC89924721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB945AFC-AF5E-41FA-AB1B-A3FC89924721}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB945AFC-AF5E-41FA-AB1B-A3FC89924721}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB945AFC-AF5E-41FA-AB1B-A3FC89924721}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0C8CC0C-4D64-4928-93FA-89B8E65276A5}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,36 @@
+﻿@model MvcOpenApi.Models.Record[]
+@using Newtonsoft.Json;
+
+@{
+    ViewBag.Title = "UVA Point";
+}
+
+<h2>指外線指數</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model[0].sitename)</th>
+            <th>@Html.DisplayNameFor(model => model[0].uvi)</th>
+            <th>@Html.DisplayNameFor(model => model[0].unit)</th>
+            <th>@Html.DisplayNameFor(model => model[0].county)</th>
+            <th>@Html.DisplayNameFor(model => model[0].wgs84_lon)</th>
+            <th>@Html.DisplayNameFor(model => model[0].wgs84_lat)</th>
+            <th>@Html.DisplayNameFor(model => model[0].datacreationdate)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model)
+        {
+            <tr>
+                <td>@record.sitename</td>
+                <td>@record.uvi</td>
+                <td>@record.unit</td>
+                <td>@record.county</td>
+                <td>@record.wgs84_lon</td>
+                <td>@record.wgs84_lat</td>
+                <td>@record.datacreationdate</td>
+            </tr>
+        }
+    </tbody>
+</table>
