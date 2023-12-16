@@ -1,0 +1,38 @@
+﻿@model DataBaseWriteAndLoad.Models.Ai
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>About</title>
+</head>
+<body>
+    <div>
+        @if (string.IsNullOrEmpty(ViewBag.Name))
+        {
+            @using (Html.BeginForm("Index", "Equipment", FormMethod.Post))
+            {
+                <label>AlgorithmName:</label>
+                <input type="text" name="AlgorithmName" />
+                <br />
+                <label>HyperparameterName:</label>
+                <input type="text" name="HyperparameterName" />
+                <br />
+                <label>CrossName:</label>
+                <input type="text" name="CrossName" />
+                <br />
+                <input type="submit" value="Add" />
+
+            }
+        }
+        else
+        {
+            <p>AlgorithmName: @ViewBag.AlgorithmName</p>
+            <p>HyperparameterName: @ViewBag.HyperparameterName</p>
+            <p>CrossName: @ViewBag.CrossName</p>
+        }
+    </div>
+</body>
+</html>
