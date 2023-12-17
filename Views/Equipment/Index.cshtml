@@ -1,4 +1,4 @@
-﻿@model DataBaseWriteAndLoad.Models.Ai
+﻿@model IEnumerable<DataBaseWriteAndLoad.Models.Ai>
 @{
     Layout = null;
 }
@@ -9,30 +9,44 @@
     <title>About</title>
 </head>
 <body>
-    <div>
-        @if (string.IsNullOrEmpty(ViewBag.Name))
-        {
-            @using (Html.BeginForm("Index", "Equipment", FormMethod.Post))
-            {
-                <label>AlgorithmName:</label>
-                <input type="text" name="AlgorithmName" />
-                <br />
-                <label>HyperparameterName:</label>
-                <input type="text" name="HyperparameterName" />
-                <br />
-                <label>CrossName:</label>
-                <input type="text" name="CrossName" />
-                <br />
-                <input type="submit" value="Add" />
+    <h2>Index</h2>
 
-            }
-        }
-        else
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AlgorithmName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HyperparameterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CrossName)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
         {
-            <p>AlgorithmName: @ViewBag.AlgorithmName</p>
-            <p>HyperparameterName: @ViewBag.HyperparameterName</p>
-            <p>CrossName: @ViewBag.CrossName</p>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlgorithmName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HyperparameterName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CrossName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
         }
-    </div>
+
+    </table>
 </body>
 </html>

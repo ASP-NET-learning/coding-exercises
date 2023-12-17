@@ -1,8 +1,7 @@
 ﻿using DataBaseWriteAndLoad.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
-using System.Reflection.PortableExecutable;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseWriteAndLoad.Controllers
 {
@@ -16,34 +15,59 @@ namespace DataBaseWriteAndLoad.Controllers
             _context = context;
         }
 
-
-        public IActionResult Index(IFormCollection post)
+        // GET: Ai
+        public ActionResult Index()
         {
-            ViewBag.AlgorithmName = post["AlgorithmName"];
-            ViewBag.HyperparameterName = post["HyperparameterName"];
-            ViewBag.CrossName = post["CrossName"];
+            return View(_context.Ai.ToList());
+        }
 
-            if (!string.IsNullOrEmpty(ViewBag.AlgorithmName) && 
-                !string.IsNullOrEmpty(ViewBag.HyperparameterName) &&
-                !string.IsNullOrEmpty(ViewBag.CrossName))
+        // GET: Ai/Details/5
+        public ActionResult Details(int? ID) 
+        {
+            if (ID == null)
             {
-                Ai newAi = new Ai
-                {
-                    CreateID = "A001",
-                    MachineID = "Mach001",
-                    AlgorithmName = ViewBag.AlgorithmName,
-                    HyperparameterName = ViewBag.HyperparameterName,
-                    CrossName = ViewBag.CrossName
-                };
-                _context.Ai.Add(newAi);
-                _context.SaveChanges();
+                return new StatusCodeResult(404);
             }
+
+            Ai LoadNewAi = _context.Ai.Find(ID);
+            if (LoadNewAi == null)
+            {
+                return new StatusCodeResult(404);
+            }
+            return View(LoadNewAi);
+        }
+
+
+        // POST: Ai/Create
+        public ActionResult Create()
+        {
             return View();
         }
 
-        
+        // POST: Ai/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(
+            [Bind("CreateID","MachineID","AlgorithmName, HyperparameterName, CrossName")] Ai ai)
+        {
+                
+                _context.Add(ai);
+                try 
+                {
+                    _context.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    var innerException = ex.InnerException;
+                    while (innerException != null)
+                    {
+                        Console.WriteLine(innerException.Message);
+                        innerException = innerException.InnerException;
+                    }
 
-
-
+                }
+                 // 使用 SaveChanges() 以同步方式保存更改
+                return RedirectToAction(nameof(Index));
+        }
     }
 }

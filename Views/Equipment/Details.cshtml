@@ -1,0 +1,30 @@
+﻿@model DataBaseWriteAndLoad.Models.Ai
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Friend</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AlgorithmName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HyperparameterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CrossName)
+        </dt>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
